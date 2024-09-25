@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main () {
+	int i, n;
+	int sum;
+	
+	cout << "Batas Awal: ";
+	cin >> i;
+	cout << "Batas Akhir: ";
+	cin >> n;
+	
+	for (i; i<=n; i ++)
+	
+	if (i%2 == 0)
+	{
+		cout << i << endl;
+		sum += i;
+	}
+	cout << "\nJumlah: " << sum << endl;
+}
