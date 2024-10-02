@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i, N, jumlah=0;
+    i = 1;
+    
+    cout << "Masukan banyak nilai : " ;
+    cin >> N ;
+    jumlah = jumlah +N;
+    if (N %2 == 0){
+    	cout << N << " - ";
+    	N = N-2;
+    }else{
+    	cout << N << " - ";
+    	N = N-1;
+    }
+    //perulangan/
+    while (N >= i) {
+        if (N %2 == 0 ){
+        	cout << N <<  " - "; 
+        	jumlah = jumlah -N;
+        }
+        N--;
+    }
+    cout << N << " = ";
+    jumlah = jumlah -N;
+    cout << jumlah; 
+  
+    return 0;
+}
