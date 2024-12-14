@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorit Musik dan Penyanyi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #3f0000;
+            color: white;
+            text-align: center;
+            padding: 1px;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .favorite-songs ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .favorite-songs li {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .artist-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .artist-info img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #290000;
+            color: white;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Header -->
+    <header>
+        <h1>Favorit Musik dan Penyanyi</h1>
+    </header>
+
+    <!-- Navigasi -->
+    <nav>
+        <a href="#">Beranda</a>
+        <a href="#">Lagu Favorit</a>
+        <a href="#">Penyanyi</a>
+        <a href="#">Kontak</a>
+    </nav>
+
+    <!-- Bagian Konten Utama -->
+    <section>
+        <h2>Lagu Favorit Saya</h2>
+        <p>Berikut adalah beberapa lagu favorit saya yang sering saya dengar:</p>
+        <div class="favorite-songs">
+            <ul>
+                <li>Take A Chance With Me - NIKI</li>
+                <li>Die For You - The Weeknd</li>
+                <li>W.H.U.T - Aisha Retno</li>
+                <li>Happier Than Ever - Billie Eilish</li>
+                <li>Stay - The Kid LAROI & Justin Bieber</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Bagian Penyanyi Favorit -->
+    <section>
+        <h2>Penyanyi Favorit Saya</h2>
+        <p>Berikut adalah beberapa penyanyi favorit saya yang memiliki lagu-lagu yang sangat saya sukai:</p>
+        <div class="artist-info">
+            <!-- Penyanyi 1 -->
+            <div>
+                <img src="https://i.scdn.co/image/ab67616d0000b2732c2861964a03f27e3093f1b2" alt="Ed Sheeran">
+                <p><strong>NIKI</strong></p>
+            </div>
+            <!-- Penyanyi 2 -->
+            <div>
+                <img src="https://i1.sndcdn.com/artworks-eO1lrJH40L9wYlXk-PRJF4A-t1080x1080.jpg" alt="The Weeknd">
+                <p><strong>The Weeknd</strong></p>
+            </div>
+            <!-- Penyanyi 3 -->
+            <div>
+                <img src="https://i.scdn.co/image/ab67616d00001e024f5c424a659a817e92b9f96a" alt="Dua Lipa">
+                <p><strong>Aisha Retno</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Favorit Musik dan Penyanyi - Semua Hak Cipta Dilindungi</p>
+    </footer>
+
+</body>
+</html>
