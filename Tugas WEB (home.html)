@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorit Film</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #290000;
+            color: white;
+            text-align: center;
+            padding: 1%;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .film-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .film-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .film-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .film-item h3 {
+            text-align: center;
+            padding: 10px 0;
+            margin: 0;
+            background-color: #290000;
+            color: white;
+        }
+        .film-item p {
+            padding: 15px;
+            font-size: 14px;
+            color: #290000;
+        }
+        footer {
+            background-color: #290000;
+            color: white;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        h2{
+            text-align: center;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Header -->
+    <header>
+        <h1>Favorit Film Saya</h1>
+    </header>
+
+    <!-- Navigasi -->
+    <nav>
+        <a href="#">Beranda</a>
+        <a href="#">Tentang</a>
+        <a href="#">Kontak</a>
+    </nav>
+
+    <!-- Bagian Konten Utama -->
+    <section>
+        <h2>Film Favorit Saya</h2>
+        <div class="film-list">
+            <!-- Film 1 -->
+            <div class="film-item">
+                <img src="https://i0.wp.com/suarausu.or.id/wp-content/uploads/2024/02/shop-for-killer-jpg.webp?fit=960%2C1200&ssl=1" alt="Inception">
+                <h3>A Shop For Killers</h3>
+                <p>“A Shop for Killers” adalah serial drama Korea bergenre aksi-thriller yang tayang pada Januari 2024 secara eksklusif di Disney+ Hotstar. Serial ini terdiri dari 8 episode dan dibintangi oleh Lee Dongwook dan Kim Hyejun. Ceritanya mengikuti Jeong Jian, seorang mahasiswi yang tiba-tiba menjadi target pembunuh bayaran setelah kematian misterius pamannya, Jeong Jinman.</p>
+            </div>
+
+            <!-- Film 2 -->
+            <div class="film-item">
+                <img src="https://awsimages.detik.net.id/community/media/visual/2020/09/12/fast-furious-9_43.jpeg?w=600&q=90" alt="The Dark Knight">
+                <h3>Fast and Furious</h3>
+                <p>Film ini menggabungkan aksi balapan mobil, aksi kejar-kejaran yang menegangkan, dan tema persahabatan, loyalitas, serta kehidupan jalanan. Keberhasilan film pertama ini kemudian mengarah pada sekuel-sekuelnya yang memperluas cerita tentang aksi balapan, perampokan, dan hubungan antar karakter yang terus berkembang.</p>
+            </div>
+
+            <!-- Film 3 -->
+            <div class="film-item">
+                <img src="https://awsimages.detik.net.id/community/media/visual/2023/07/04/poster-film-john-wick-2_43.jpeg?w=1200" alt="The Matrix">
+                <h3>Jhon Wick</h3>
+                <p>John Wick, mantan pembunuh bayaran, berduka atas kematian istrinya. Tapi, ia terpaksa kembali ke dunia hitam setelah kelompok gangster Rusia mencuri mobil dan membunuh anak anjing warisan istrinya.</p>
+            </div>
+
+            <!-- Film 4 -->
+            <div class="film-item">
+                <img src="https://cdn-1.timesmedia.co.id/images/2023/08/14/The-Worst-Evil.jpg" alt="The Godfather">
+                <h3>The Worst Of Evil</h3>
+                <p>The Worst of Evil adalah drama kriminal Korea Selatan tahun 2023 yang penuh ketegangan dan aksi, berlatar di Seoul pada tahun 1990-an. Serial ini mengeksplorasi dunia perdagangan narkoba internasional dan intrik yang melibatkan geng-geng kriminal besar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Favorit Film Saya - Semua Hak Cipta Dilindungi</p>
+    </footer>
+
+</body>
+</html>
