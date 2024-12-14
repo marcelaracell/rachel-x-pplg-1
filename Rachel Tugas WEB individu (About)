@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Saya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 7% 10%;
+            padding: 20px;
+            
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .profile-img {
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Biodata Diri</h1>
+        
+        <!-- Gambar Profil -->
+        <img src="image.png" alt="Foto Profil" class="profile-img">
+
+        <!-- Tabel Biodata -->
+        <table>
+            <tr>
+                <th>Nama Lengkap</th>
+                <td>Rachel Marcela Rungkat</td>
+            </tr>
+            <tr>
+                <th>Tempat, Tanggal Lahir</th>
+                <td>Bandung, 5 Maret 2009</td>
+            </tr>
+            <tr>
+                <th>Alamat</th>
+                <td>Jl. Ciumbuleuit GG.Usukandi RT 06 RW 10</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>rachelrungkat05@email.com</td>
+            </tr>
+            <tr>
+                <th>No. Telepon</th>
+                <td> (+62)838-5648-6962 </td>
+            </tr>
+            <tr>
+                <th>Hobi</th>
+                <td>Badminton, Menonton Film, Mendegarkan Musik</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
