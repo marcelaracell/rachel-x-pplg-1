@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landscape Photography Course</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #1c1c1c;
+      color: #fff;
+    }
+
+    header {
+      background: url('backround.jpg') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    header .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    header .content h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header .content p {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .pricing {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .price-box {
+      background: #333;
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: #111;
+      padding: 30px 15px;
+    }
+
+    .feature {
+      flex: 1 1 200px;
+      max-width: 250px;
+      background: #222;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .classes {
+      padding: 40px 20px;
+      background: #1a1a1a;
+    }
+
+    .classes h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .class-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .class-card {
+      background: #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      text-align: center;
+    }
+
+    .class-card img {
+      width: 100%;
+      height: 225px;
+      object-fit: cover;
+    }
+
+    .class-card h3 {
+      margin: 10px 0;
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-button {
+      background: #fff;
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .class-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.class-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.class-card:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+ .class-grid {
+  display: flex;
+  flex-wrap: nowrap; /* penting: supaya tidak turun ke bawah */
+  overflow-x: auto; /* scroll horizontal */
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory; /* opsional: snap saat geser */
+}
+
+.class-card {
+  flex: 0 0 auto; /* supaya tiap kartu tidak menyusut atau wrap */
+  width: 300px;
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.class-grid::-webkit-scrollbar {
+  height: 5px;
+}
+
+.class-grid::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+.classes {
+  position: relative; /* agar tombol posisinya relatif ke section ini */
+}
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#">Photographers</a>
+      <a href="#">Classes</a>
+      <a href="#">Workshops</a>
+      <a href="#" class="login-button">Login</a>
+    </nav>
+    <div class="content">
+      <h1>Pesona Alam Indonesia</h1>
+      <p>marcela</p>
+  </header>
+
+  <section class="features">
+    <div class="feature">Be a professional landscape photographer</div>
+    <div class="feature">Explore top secrets of Astro Photography</div>
+    <div class="feature">Improve your composition like a pro</div>
+    <div class="feature">Explore more landscape shooting techniques</div>
+  </section>
+
+  <section class="classes">
+  <h2>Destinasi Alam Unggulan</h2>
+
+  <!-- Tombol panah -->
+  <button class="scroll-btn left">&#10094;</button>
+  <button class="scroll-btn right">&#10095;</button>
+
+  <div class="class-grid" id="classGrid">
+    <div class="class-card">
+      <img src="pulaukomodo.jpg" alt="People">
+      <h3>Pulau Komodo</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="pulauweh.jpg" alt="Landscape">
+      <h3>Pulau Weh</h3>
+      <p>Daniel Kordan</p>
+    </div>
+    <div class="class-card">
+      <img src="mentawai.jpg" alt="Astro">
+      <h3>Mentawai</h3>
+      <p>Arild Heitmann</p>
+    </div>
+    <div class="class-card">
+      <img src="rajaampat.land.jpg" alt="Architecture">
+      <h3>Raja Ampat</h3>
+      <p>Imar Baan</p>
+    </div>
+    <div class="class-card">
+      <img src="danautoba.webp" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="bandaneira.jpeg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="bunaken.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="pulaubelitung.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="rajaampat.potret.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="bromo.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="hutan.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+    <div class="class-card">
+      <img src="jaya.jpg" alt="People">
+      <h3>Danau Toba</h3>
+      <p>Pawel Kuczynski</p>
+    </div>
+  </div>
+</section>
+<script>
+  const grid = document.getElementById('classGrid');
+  const scrollAmount = 320; // geser sejauh satu kartu
+
+  document.querySelector('.scroll-btn.left').onclick = () => {
+    grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  };
+
+  document.querySelector('.scroll-btn.right').onclick = () => {
+    grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+</script>
+</body>
