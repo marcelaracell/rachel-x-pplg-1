@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mentawai</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    :root {
+      --color-bg: #121212;
+      --color-bg-gradient: linear-gradient(135deg, #1e1e1e, #121212);
+      --color-text-primary: #e0e0e0;
+      --color-text-secondary: #9ca3af;
+      --border-radius: 0.75rem;
+      --max-width: 1200px; /* increased max width */
+      --padding-vertical: 3rem;
+      --font-heading-size: 3rem; /* 48px */
+      --font-body-size: 1.125rem; /* 18px */
+      --transition-speed: 0.3s;
+      --card-bg: rgba(255 255 255 / 0.08);
+      --card-blur: 15px;
+      --shadow-light: 0 10px 30px rgba(0,0,0,0.7);
+      --accent-color: #7c3aed;
+      --nav-height: 64px;
+      --nav-bg: rgba(18,18,18,0.9);
+      --nav-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--color-bg-gradient);
+      color: var(--color-text-primary);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      justify-content: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Sticky top navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: var(--nav-bg);
+      box-shadow: var(--nav-shadow);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      user-select: text;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    nav a.nav-link:hover,
+    nav a.nav-link:focus-visible {
+      color: var(--color-text-primary);
+      background-color: rgba(124, 58, 237, 0.2);
+      outline: none;
+      cursor: pointer;
+    }
+
+    main.container {
+      max-width: var(--max-width);
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(var(--card-blur));
+      -webkit-backdrop-filter: blur(var(--card-blur));
+      box-shadow: var(--shadow-light);
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    a.photo-card {
+      width: 100%;
+      /* made photo width fill container fully */
+      max-width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(58, 201, 245, 0.4);
+      display: block;
+      cursor: pointer;
+      transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow var(--transition-speed);
+      outline-offset: 3px;
+    }
+    a.photo-card:hover,
+    a.photo-card:focus-visible {
+      transform: scale(1.04);
+      box-shadow: 0 20px 50px rgba(72, 237, 243, 0.925);
+      outline: none;
+    }
+
+    img.photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9; /* wider aspect ratio for more width */
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      user-select: none;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+      transition: filter var(--transition-speed);
+    }
+    a.photo-card:hover img,
+    a.photo-card:focus-visible img {
+      filter: drop-shadow(0 0 5px var(--accent-color));
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: var(--font-heading-size);
+      text-align: center;
+      color: var(--color-text-primary);
+      user-select: none;
+    }
+
+    p.description {
+      max-width: 900px; /* wider for text area */
+      color: var(--color-text-secondary);
+      font-size: var(--font-body-size);
+      margin: 0;
+      text-align: center;
+      user-select: text;
+    }
+
+    @media (max-width: 768px) {
+      main.container {
+        padding: 2rem 2rem;
+      }
+      p.description {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main.container {
+        padding: 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+      p.description {
+        font-size: 1rem;
+      }
+      nav {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html" class="logo" aria-label="Homepage">MySite</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" aria-label="Go back to homepage">Home</a>
+    </div>
+  </nav>
+
+  <main class="container" tabindex="-1">
+    <a href="https://unsplash.com/photos/5QgIuuBxKwM" target="_blank" rel="noopener" class="photo-card" aria-label="View mountain landscape photo on Unsplash">
+      <img
+        src="mentawai.jpg"
+        alt="Mountain landscape at sunset with pink sky and fog in the valley"
+        class="photo"
+        draggable="false"
+      />
+    </a>
+    <h1>Mentawai</h1>
+    <p class="description">
+      Kabupaten Kepulauan Mentawai adalah salah satu kabupaten yang terletak di Provinsi Sumatera Barat, Indonesia. Kabupaten ini berada di luar dari wilayah pulau Sumatera, yang terdiri atas empat pulau utama. Kabupaten Kepulauan Mentawai dibentuk berdasarkan UU RI No. 49 Tahun 1999 resmi dimekarkan dari Kabupaten Padang Pariaman[6] dan dinamai menurut nama asli geografisnya.
+
+Ada empat pulau utama yang berpenghuni yaitu Pulau Siberut, Pulau Sipora, Pulau Pagai Utara, dan Pulau Pagai Selatan yang dihuni oleh mayoritas masyarakat suku Mentawai, suku Minangkabau, dan pendatang lainnya di luar Sumatera Barat.[7] Selain itu masih ada beberapa pulau kecil lainnya yang berpenghuni namun sebagian besar pulau yang lain hanya ditanami dengan pohon kelapa.[8] Pada pertengahan tahun 2024, jumlah penduduk Kepulauan Mentawai sebanyak 96.570 jiwa.
+    </p>
+  </main>
+</body>
+</html>
+
