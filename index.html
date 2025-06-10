@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landscape Photography Course</title>
+  <title>Explore Indonesia</title> 
   <style>
     body {
       margin: 0;
@@ -12,40 +12,187 @@
       color: #fff;
     }
 
+    body h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
     header {
-      background: url('backround.jpg') no-repeat center center/cover;
-      height: 90vh;
+      background: url("1111.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
-    header::after {
+    header::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .particle:nth-child(1) {
+      width: 4px;
+      height: 4px;
+      top: 20%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      width: 6px;
+      height: 6px;
+      top: 60%;
+      left: 25%;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(3) {
+      width: 3px;
+      height: 3px;
+      top: 40%;
+      left: 75%;
+      animation-delay: 4s;
+    }
+
+    .particle:nth-child(4) {
+      width: 5px;
+      height: 5px;
+      top: 80%;
+      left: 60%;
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+
+    /* Vietnam map silhouette */
+    .vietnam-map {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 150px;
+      height: 300px;
+      opacity: 0.4;
+      z-index: 1;
     }
 
     header .content {
       position: relative;
       z-index: 2;
+      animation: fadeInUp 1.5s ease-out;
     }
 
-    header .content h1 {
-      font-size: 3rem;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .explore-text {
+      font-size: 2.5rem;
+      font-weight: 300;
+      display: block;
+      margin-bottom: 10px;
+      font-family: 'Segoe UI', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      animation: slideInLeft 1s ease-out 0.5s forwards;
+    }
+
+    .vietnam-title {
+      font-size: 6rem;
+      font-weight: 300;
       margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
+      letter-spacing: 15px;
+      text-transform: uppercase;
+      position: relative;
+      opacity: 0;
+      animation: slideInRight 1s ease-out 1s forwards;
     }
 
-    header .content p {
-      font-size: 1.2rem;
-      margin: 10px 0;
+    .vietnam-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+      border-radius: 2px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 1.8s forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
     .pricing {
@@ -77,41 +224,97 @@
       padding: 15px;
       border-radius: 10px;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      background: #333;
     }
 
     .classes {
       padding: 40px 20px;
       background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
     }
 
     .classes h2 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
     }
 
     .class-grid {
       display: flex;
-      flex-wrap: wrap;
       gap: 20px;
-      justify-content: center;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding: 10px 0 20px 0;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .class-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .class-grid::-webkit-scrollbar-track {
+      background: #333;
+      border-radius: 10px;
+    }
+
+    .class-grid::-webkit-scrollbar-thumb {
+      background: #666;
+      border-radius: 10px;
+    }
+
+    .class-grid::-webkit-scrollbar-thumb:hover {
+      background: #888;
     }
 
     .class-card {
+      flex: 0 0 300px;
       background: #2a2a2a;
-      border-radius: 10px;
+      border-radius: 15px;
       overflow: hidden;
-      width: 300px;
       text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      scroll-snap-align: start;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .class-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    }
+
+    .class-card:active {
+      transform: translateY(-5px) scale(1.02);
     }
 
     .class-card img {
       width: 100%;
-      height: 225px;
+      height: 200px;
       object-fit: cover;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
     }
 
     .class-card h3 {
-      margin: 10px 0;
+      margin: 15px 0 5px 0;
+      font-size: 1.3rem;
+    }
+
+    .class-card p {
+      margin: 5px 0 15px 0;
+      opacity: 0.7;
+      font-size: 0.9rem;
     }
 
     nav {
@@ -126,187 +329,362 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: opacity 0.3s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
     }
 
     .login-button {
       background: #fff;
       color: #000;
-      padding: 5px 15px;
-      border-radius: 20px;
+      padding: 8px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
     }
 
-    .class-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+    .login-button:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      font-size: 1.5rem;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .scroll-btn.left {
+      left: 10px;
+    }
+
+    .scroll-btn.right {
+      right: 10px;
+    }
+
+    .scroll-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+      .explore-text {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+      }
+      
+      .vietnam-title {
+        font-size: 3.5rem;
+        letter-spacing: 8px;
+      }
+      
+      .vietnam-map {
+        width: 100px;
+        height: 200px;
+        right: 5%;
+      }
+      
+      .classes {
+        padding: 20px 10px;
+      }
+      
+      .class-card {
+        flex: 0 0 250px;
+      }
+      
+      .scroll-btn {
+        font-size: 1.2rem;
+        padding: 10px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .explore-text {
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+      }
+      
+      .vietnam-title {
+        font-size: 2.5rem;
+        letter-spacing: 4px;
+      }
+      
+      .vietnam-map {
+        width: 80px;
+        height: 160px;
+      }
+    }
+
+    .content {
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+     section {
+      max-width: 1300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-light);
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .explanation {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+.feature.active .explanation {
+  display: block;
 }
 
-.class-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+html {
+  scroll-behavior: smooth;
 }
-
-.class-card:active {
-  transform: scale(0.97);
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
-}
- .class-grid {
-  display: flex;
-  flex-wrap: nowrap; /* penting: supaya tidak turun ke bawah */
-  overflow-x: auto; /* scroll horizontal */
-  gap: 20px;
-  padding-bottom: 10px;
-  scroll-snap-type: x mandatory; /* opsional: snap saat geser */
-}
-
-.class-card {
-  flex: 0 0 auto; /* supaya tiap kartu tidak menyusut atau wrap */
-  width: 300px;
-  background: #2a2a2a;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.class-grid::-webkit-scrollbar {
-  height: 5px;
-}
-
-.class-grid::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-}
-
-.scroll-btn {
-  position: absolute;
-  top: 55%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.scroll-btn.left {
-  left: 10px;
-}
-
-.scroll-btn.right {
-  right: 10px;
-}
-
-.classes {
-  position: relative; /* agar tombol posisinya relatif ke section ini */
-}
-
-    
   </style>
 </head>
 <body>
   <header>
+    <!-- Floating particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
     <nav>
-      <a href="#">Photographers</a>
-      <a href="#">Classes</a>
-      <a href="#">Workshops</a>
-      <a href="#" class="login-button">Login</a>
+      <a href="#features">Baca Lebih Banyak</a>
     </nav>
+
     <div class="content">
-      <h1>Pesona Alam Indonesia</h1>
-      <p>marcela</p>
+      <span class="explore-text">Explore</span>
+      <a href="https://id.wikipedia.org/wiki/Indonesia" target="_blank" style="text-decoration: none;">
+      <h1 class="vietnam-title">Indonesia</h1></a>
+
+    </div>
   </header>
 
-  <section class="features">
-    <div class="feature">Be a professional landscape photographer</div>
-    <div class="feature">Explore top secrets of Astro Photography</div>
-    <div class="feature">Improve your composition like a pro</div>
-    <div class="feature">Explore more landscape shooting techniques</div>
-  </section>
+  <section class="features" id="features">
+  <div class="feature" onclick="toggleExplanation(this)">
+    Keanekaragaman Budaya yang Luar Biasa
+    <div class="explanation">Indonesia dikenal sebagai negara dengan budaya yang sangat kaya dan beragam. Dengan lebih dari 1.300 suku bangsa dan lebih dari 700 bahasa daerah, Indonesia menjadi salah satu negara paling multikultural di dunia. Setiap daerah memiliki adat istiadat, pakaian tradisional, tarian, rumah adat, hingga upacara adat yang unik.
 
-  <section class="classes">
-  <h2>Destinasi Alam Unggulan</h2>
+Misalnya, Suku Toraja di Sulawesi Selatan terkenal dengan ritual pemakaman unik mereka yang disebut Rambu Solo’, sedangkan Suku Asmat di Papua dikenal melalui seni ukirannya yang kaya makna spiritual. Di Jawa, kesenian seperti wayang kulit, gamelan, dan batik yang sudah diakui UNESCO menjadi kebanggaan nasional.
 
-  <!-- Tombol panah -->
-  <button class="scroll-btn left">&#10094;</button>
-  <button class="scroll-btn right">&#10095;</button>
+Keberagaman ini tidak hanya mencerminkan warisan budaya yang kuat, tetapi juga menjadi kekayaan tak ternilai yang mempererat identitas nasional dalam semboyan Bhinneka Tunggal Ika — berbeda-beda tetapi tetap satu.</div>
+  </div>
+  <div class="feature" onclick="toggleExplanation(this)">
+    Keajaiban Alam dan Kekayaan Ekosistem
+    <div class="explanation">Sebagai negara kepulauan dengan lebih dari 17.000 pulau, Indonesia memiliki bentang alam yang sangat beragam dan memukau. Dari pantai tropis yang jernih di Raja Ampat dan Bunaken, hingga pegunungan aktif seperti Bromo dan Rinjani, Indonesia adalah surga bagi pecinta alam dan petualangan.
 
-  <div class="class-grid" id="classGrid">
-    <div class="class-card">
-      <img src="pulaukomodo.jpg" alt="People">
-      <h3>Pulau Komodo</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="pulauweh.jpg" alt="Landscape">
-      <h3>Pulau Weh</h3>
-      <p>Daniel Kordan</p>
-    </div>
-    <div class="class-card">
-      <img src="mentawai.jpg" alt="Astro">
-      <h3>Mentawai</h3>
-      <p>Arild Heitmann</p>
-    </div>
-    <div class="class-card">
-      <img src="rajaampat.land.jpg" alt="Architecture">
-      <h3>Raja Ampat</h3>
-      <p>Imar Baan</p>
-    </div>
-    <div class="class-card">
-      <img src="danautoba.webp" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="bandaneira.jpeg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="bunaken.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="pulaubelitung.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="rajaampat.potret.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="bromo.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="hutan.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
-    <div class="class-card">
-      <img src="jaya.jpg" alt="People">
-      <h3>Danau Toba</h3>
-      <p>Pawel Kuczynski</p>
-    </div>
+Indonesia juga merupakan bagian dari Cincin Api Pasifik, dengan lebih dari 130 gunung berapi aktif yang menciptakan pemandangan dramatis serta tanah yang subur. Tak hanya itu, hutan hujan tropis di Kalimantan dan Papua menjadi rumah bagi ribuan spesies flora dan fauna, termasuk orangutan, badak jawa, dan komodo, hewan purba yang hanya ada di Pulau Komodo.
+
+Ekosistem laut Indonesia juga luar biasa kaya. Wilayah segitiga terumbu karang dunia (Coral Triangle) menjadikan Indonesia sebagai pusat keanekaragaman hayati laut global, menjadikannya tujuan favorit bagi penyelam dunia.</div>
+  </div>
+  <div class="feature" onclick="toggleExplanation(this)">
+    Harmoni dalam Keberagaman Agama dan Kepercayaan
+    <div class="explanation">Meskipun mayoritas penduduk Indonesia beragama Islam, negara ini juga menjadi rumah bagi berbagai agama lain seperti Kristen, Katolik, Hindu, Buddha, dan Konghucu. Bahkan, kepercayaan lokal seperti Kejawen atau Aluk To Dolo masih hidup berdampingan dengan agama-agama besar.
+
+Yang menarik, semua agama ini memiliki ruang dan perlindungan dalam kehidupan sosial dan kenegaraan. Di Bali misalnya, budaya dan agama Hindu begitu terasa dalam kehidupan sehari-hari, mulai dari arsitektur pura hingga upacara adat. Di Tana Toraja, kepercayaan leluhur menyatu dengan agama modern, menciptakan sistem keyakinan yang khas dan penuh toleransi.
+
+Indonesia menjadi bukti nyata bagaimana keberagaman keyakinan bisa dijalankan dengan saling menghargai dalam satu kerangka kebangsaan yang utuh.</div>
+  </div>
+  <div class="feature" onclick="toggleExplanation(this)">
+    Sejarah Perjuangan Kemerdekaan yang Menginspirasi
+    <div class="explanation">Sejarah perjuangan bangsa Indonesia merupakan salah satu narasi kemerdekaan paling menginspirasi di dunia. Selama lebih dari 350 tahun dijajah oleh bangsa asing — Belanda, Jepang, dan lainnya — rakyat Indonesia terus berjuang dengan semangat pantang menyerah.
+
+Tokoh-tokoh seperti Soekarno, Mohammad Hatta, Cut Nyak Dien, Diponegoro, dan Imam Bonjol menjadi simbol perlawanan rakyat dalam memperjuangkan hak kemerdekaan. Puncaknya, pada 17 Agustus 1945, Indonesia memproklamasikan kemerdekaannya, yang kemudian diakui secara internasional setelah perjuangan diplomatik dan militer yang panjang.
+
+Peristiwa-peristiwa seperti Pertempuran Surabaya, Konferensi Meja Bundar, hingga Gerakan Nasionalis di awal abad ke-20 menjadi fondasi penting dalam membentuk Indonesia sebagai negara merdeka, demokratis, dan berdaulat. </div>
   </div>
 </section>
-<script>
-  const grid = document.getElementById('classGrid');
-  const scrollAmount = 320; // geser sejauh satu kartu
 
-  document.querySelector('.scroll-btn.left').onclick = () => {
-    grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  };
+  
 
-  document.querySelector('.scroll-btn.right').onclick = () => {
-    grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  };
-</script>
+  <section class="classes" id="classes">
+  <h2>Destinasi Alam Unggulan</h2>
+
+    <button class="scroll-btn left" id="scrollLeft">&#10094;</button>
+    <button class="scroll-btn right" id="scrollRight">&#10095;</button>
+
+    <div class="class-grid" id="classGrid">
+      <div class="class-card" onclick="window.location.href='gunungbromo.html'">
+        <img src="bromo.jpg" alt="Gunung Bromo">
+        <h3>Gunung Bromo</h3>
+        <p>Jawa Timur</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='pulauweh.html'">
+        <img src="pulauweh.jpg" alt="Pulau Weh">
+        <h3>Pulau Weh</h3>
+        <p>Aceh</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='pulaubelitung.html'">
+        <img src="pulaubelitung.jpg" alt="Pulau Belitung">
+        <h3>Pulau Belitung</h3>
+        <p>Kepulauan Bangka Belitung</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='mentawai.html'">
+        <img src="mentawai.jpg" alt="Mentawai">
+        <h3>Mentawai</h3>
+        <p>Sumatera Barat</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='rajaampat.html'">
+        <img src="rajaampat.land.jpg" alt="Raja Ampat">
+        <h3>Raja Ampat</h3>
+        <p>Papua Barat Daya</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='bandaneira.html'">
+        <img src="bandaneira.jpeg" alt="Banda Neira">
+        <h3>Banda Neira</h3>
+        <p>Kabupaten Maluku Tengah</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='danausentani.html'">
+        <img src="danausentani.jpg" alt="Danau Sentani">
+        <h3>Danau Sentani</h3>
+        <p>Pulau Papua</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='bunakeun.html'">
+        <img src="bunaken.jpg" alt="Bunaken">
+        <h3>Bunaken</h3>
+        <p>Manado</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='pulaukomodo.html'">
+        <img src="pulaukomodo.jpg" alt="Pulau Komodo">
+        <h3>Pulau Komodo</h3>
+        <p>NTT Pulau Sumbawa</p>
+      </div>
+      <div class="class-card" onclick="window.location.href='puncakjaya.html'">
+        <img src="jaya.jpg" alt="Puncak Jayawijaya">
+        <h3>Puncak Jayawijaya</h3>
+        <p>Kabupaten Mimika, Provinsi Papua Tengah</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const grid = document.getElementById('classGrid');
+    const leftBtn = document.getElementById('scrollLeft');
+    const rightBtn = document.getElementById('scrollRight');
+    
+    // Scroll amount calculation
+    const scrollAmount = 320; // card width + gap
+
+    // Scroll functions
+    leftBtn.onclick = () => {
+      grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    };
+
+    rightBtn.onclick = () => {
+      grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    };
+
+    // Update button visibility and state
+    function updateButtonState() {
+      const isAtStart = grid.scrollLeft <= 0;
+      const isAtEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 1;
+      
+      leftBtn.disabled = isAtStart;
+      rightBtn.disabled = isAtEnd;
+      
+      leftBtn.style.opacity = isAtStart ? '0.3' : '1';
+      rightBtn.style.opacity = isAtEnd ? '0.3' : '1';
+    }
+
+    // Event listeners
+    grid.addEventListener('scroll', updateButtonState);
+    window.addEventListener('resize', updateButtonState);
+    
+    // Initialize button state
+    updateButtonState();
+
+    // Touch/swipe functionality for mobile
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    grid.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - grid.offsetLeft;
+      scrollLeft = grid.scrollLeft;
+      grid.style.cursor = 'grabbing';
+    });
+
+    grid.addEventListener('mouseleave', () => {
+      isDown = false;
+      grid.style.cursor = 'grab';
+    });
+
+    grid.addEventListener('mouseup', () => {
+      isDown = false;
+      grid.style.cursor = 'grab';
+    });
+
+    grid.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - grid.offsetLeft;
+      const walk = (x - startX) * 2;
+      grid.scrollLeft = scrollLeft - walk;
+    });
+    
+
+  document.getElementById("scrollToDestinasi").addEventListener("click", function(e) {
+    e.preventDefault(); // Mencegah aksi default link
+    const target = document.getElementById("destinasi");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  function toggleExplanation(element) {
+  const alreadyActive = element.classList.contains("active");
+
+  // Tutup semua
+  document.querySelectorAll(".feature").forEach(f => f.classList.remove("active"));
+
+  // Jika belum aktif, buka
+  if (!alreadyActive) {
+    element.classList.add("active");
+  }
+}
+
+  </script>
+  <footer style="background-color: #0d0d0d; color: #999; padding: 30px 20px; font-size: 0.9rem; text-align: center; margin-top: 50px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      
+      <!-- Logo atau Nama Situs -->
+      <div style="font-size: 1.2rem; color: #fff; font-weight: bold;">Wisata Indonesia</div>
+
+      <!-- Media Sosial -->
+      <div style="margin-top: 15px;">
+        <a href="https://www.instagram.com/rchlmcr?igsh=ZThlZDUyYnpvdGsy" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">Instagram</a>
+      </div>
+
+      <!-- Copyright -->
+      <div style="margin-top: 15px; font-size: 0.8rem; color: #666;">
+        &copy; 2025 Wisata Indonesia. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
+</html>
