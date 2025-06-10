@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pulau Belitung</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    :root {
+      --color-bg: #121212;
+      --color-bg-gradient: linear-gradient(135deg, #1e1e1e, #121212);
+      --color-text-primary: #e0e0e0;
+      --color-text-secondary: #9ca3af;
+      --border-radius: 0.75rem;
+      --max-width: 1200px; /* increased max width */
+      --padding-vertical: 3rem;
+      --font-heading-size: 3rem; /* 48px */
+      --font-body-size: 1.125rem; /* 18px */
+      --transition-speed: 0.3s;
+      --card-bg: rgba(255 255 255 / 0.08);
+      --card-blur: 15px;
+      --shadow-light: 0 10px 30px rgba(0,0,0,0.7);
+      --accent-color: #7c3aed;
+      --nav-height: 64px;
+      --nav-bg: rgba(18,18,18,0.9);
+      --nav-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--color-bg-gradient);
+      color: var(--color-text-primary);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      justify-content: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Sticky top navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: var(--nav-bg);
+      box-shadow: var(--nav-shadow);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      user-select: text;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    nav a.nav-link:hover,
+    nav a.nav-link:focus-visible {
+      color: var(--color-text-primary);
+      background-color: rgba(124, 58, 237, 0.2);
+      outline: none;
+      cursor: pointer;
+    }
+
+    main.container {
+      max-width: var(--max-width);
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(var(--card-blur));
+      -webkit-backdrop-filter: blur(var(--card-blur));
+      box-shadow: var(--shadow-light);
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    a.photo-card {
+      width: 100%;
+      /* made photo width fill container fully */
+      max-width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(7, 4, 177, 0.4);
+      display: block;
+      cursor: pointer;
+      transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow var(--transition-speed);
+      outline-offset: 3px;
+    }
+    a.photo-card:hover,
+    a.photo-card:focus-visible {
+      transform: scale(1.04);
+      box-shadow: 0 20px 50px rgba(86, 175, 248, 0.7);
+      outline: none;
+    }
+
+    img.photo {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 16 / 9; /* wider aspect ratio for more width */
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      user-select: none;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+      transition: filter var(--transition-speed);
+    }
+    a.photo-card:hover img,
+    a.photo-card:focus-visible img {
+      filter: drop-shadow(0 0 5px var(--accent-color));
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: var(--font-heading-size);
+      text-align: center;
+      color: var(--color-text-primary);
+      user-select: none;
+    }
+
+    p.description {
+      max-width: 900px; /* wider for text area */
+      color: var(--color-text-secondary);
+      font-size: var(--font-body-size);
+      margin: 0;
+      text-align: center;
+      user-select: text;
+    }
+
+    @media (max-width: 768px) {
+      main.container {
+        padding: 2rem 2rem;
+      }
+      p.description {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main.container {
+        padding: 2rem 1.5rem;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+      p.description {
+        font-size: 1rem;
+      }
+      nav {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="index.html" class="logo" aria-label="Homepage">MySite</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link" aria-label="Go back to homepage">Home</a>
+    </div>
+  </nav>
+
+  <main class="container" tabindex="-1">
+    <a href="https://unsplash.com/photos/5QgIuuBxKwM" target="_blank" rel="noopener" class="photo-card" aria-label="View mountain landscape photo on Unsplash">
+      <img
+        src="pulaubelitung.jpg"
+        alt="Mountain landscape at sunset with pink sky and fog in the valley"
+        class="photo"
+        draggable="false"
+      />
+    </a>
+    <h1>Pulau Belitung</h1>
+    <p class="description">
+      Pulau Belitung, atau Belitong (bahasa setempat, diambil dari nama sejenis siput laut), dulunya dikenal sebagai Billiton adalah sebuah pulau di lepas pantai timur Sumatra, Indonesia, diapit oleh Selat Gaspar dan Selat Karimata. Pulau ini terkenal dengan lada putih (Piper sp.) yang dalam bahasa setempat disebut sahang, dan bahan tambang tipe galian-C seperti timah putih (Stannuum), pasir kuarsa, tanah liat putih (kaolin), dan granit. Serta akhir-akhir ini menjadi tujuan wisata alam alternatif. Pulau ini dahulu dimiliki Britania Raya (1812), sebelum akhirnya ditukar kepada Belanda, bersama-sama Bengkulu, dengan Singapura dan New Amsterdam (sekarang bagian kota New York). Kota utamanya adalah Tanjung Pandan.
+
+Pulau Belitung terbagi menjadi 2 kabupaten yaitu Kabupaten Belitung, beribukota di Tanjung Pandan, dan Belitung Timur, beribukota Manggar.
+
+Sebagian besar penduduknya, terutama yang tinggal di kawasan pesisir pantai, sangat akrab dengan kehidupan bahari yang kaya dengan hasil ikan laut. Berbagai olahan makanan yang berbahan ikan menjadi makanan sehari-hari penduduknya. Kekayaan laut menjadi salah satu sumber mata pencaharian penduduk Belitung. Sumber daya alam yang tak kalah penting bagi kehidupan masyarakat Belitung adalah timah. Usaha pertambangan timah sudah dimulai sejak zaman Hindia Belanda.
+
+Penduduk Pulau Belitung terutama adalah suku Melayu (bertutur dengan dialek Belitung) dan keturunan Tionghoa Hokkien dan Hakka.
+
+Secara geografis pulau Belitung (Melayu ; Belitong) terletak pada 107°31,5' - 108°18' Bujur Timur dan 2°31,5'-3°6,5' Lintang Selatan. Secara keseluruhan luas pulau Belitung mencapai 4.800 km² atau 480.010 ha.Pulau Belitung disebelah utara dibatasi oleh Laut Cina Selatan, sebelah timur berbatasan dengan selat Karimata, sebelah selatan berbatasan dengan Laut Jawa dan sebelah barat berbatasan dengan selat Gaspar. Di sekitar pulau ini terdapat pulau-pulau kecil seperti Pulau Mendanau, Kalimambang, Gresik, Seliu dan lain-lain.
+    </p>
+  </main>
+</body>
+</html>
+
